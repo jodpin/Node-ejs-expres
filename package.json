@@ -2,9 +2,10 @@
   "name": "intro-mern",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "ejsExpress.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ejsExpress",
+    "start": "node ejsExpress"
   },
   "keywords": [],
   "author": "",
