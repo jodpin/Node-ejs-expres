@@ -1,6 +1,8 @@
 <%- include("templates/cabecera", {tituloWeb: "mascotas"}) %> 
 
 <div class="container">
+  <h1>Crud Node-Ejs-Mongo</h1>
+  <a href="mascotas/crear" class="btn btn-success btn-lg btn-block my-4"> Nueva mascota</a>
     <% if (arrayMascotas.length) { %>
         <table class="table">
             <thead>

@@ -1,11 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
+var bodyParser = require('body-parser');
 require("dotenv").config();
 
 const app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 const port = process.env.PORT || 3000;
 
-const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.7rdg5ca.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority?directConnection=true`
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.7rdg5ca.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 mongoose.connect(uri).then(console.log("base de datos conectada"))
 
 app.use('/', require('./router/RutasWeb.js'));
