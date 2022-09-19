@@ -81,11 +81,12 @@
 
   formEditar.addEventListener("submit", async (e) => {
     e.preventDefault();
-    // Alternativa #1 (capturar input)
-    const name = formEditar.elements["nombre"].value;
+    
     // Alternativa #2 (capturar input)
-    const description = document.querySelector("#descripcionInput").value;
+    const name = document.getElementById("nombreInput").value;
+    const description = document.getElementById("descripcionInput").value;
     const id = formEditar.dataset.id;
+    console.log(name, description, id);
     
    
     const data = await fetch(`/mascotas/${id}`, {
