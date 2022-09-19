@@ -1,0 +1,56 @@
+<%- include("templates/cabecera.ejs", {tituloWeb: "editar mascota"}) %>
+
+<div class="container">
+  <h1>Detalle mascotaaaaaa</h1>
+  <% if (error) { %>
+  <p><%= mensaje%></p>
+
+  <% } %> <% if (!error) { %>
+
+  <form id="editar" data-id="<%= mascota.id %>">
+    <input
+      type="text"
+      value="<%= mascota.name %>"
+      class="form-control my-2"
+      name="name"
+      id="nombreInput"
+    />
+    <input
+      type="text"
+      value="<%= mascota.description %>"
+      class="form-control my-2"
+      name="description"
+      id="descripcionInput"
+    />
+    <button class="btn btn-warning btn-sm" type="submit">Editar</button>
+  </form>
+  <hr />
+  <button
+    id="btnEliminar"
+    class="btn btn-danger btn-sm"
+    data-id="<%= mascota.id %>"
+  >
+    Eliminar
+  </button>
+  <!-- <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Description</th>
+        <th scope="col">Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row"><%= mascota.id %></th>
+        <td><%= mascota.name %></td>
+        <td><%= mascota.description %></td>
+        <td><button id="btnEliminar" class="btn btn-danger btn-sm" data-id="<%= mascota.id %>">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table> -->
+  <% } %>
+  <a href="/mascotas" class="btn btn-dark btn-block">Volver a mascotas</a>
+</div>
+<%- include("templates/footer.ejs") %>

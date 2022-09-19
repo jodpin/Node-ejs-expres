@@ -35,4 +35,20 @@ router.get("/", async (req, res) => {
     }
   });
 
+  router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const mascotaDb = await Mascota.findOne({ _id: id });
+    res.render("detalle", {
+      mascota: mascotaDb,
+      error: false,
+    });
+  } catch (error) {
+    console.log(error);
+    res.render("detalle", {
+      error: true,
+      mensaje: "no se encuentra el elemento seleccionado",
+    });
+  }
+});
 module.exports = router;
