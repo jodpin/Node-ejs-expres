@@ -54,3 +54,56 @@
   <a href="/mascotas" class="btn btn-dark btn-block">Volver a mascotas</a>
 </div>
 <%- include("templates/footer.ejs") %>
+<script>
+  const eliminar = document.querySelector("#btnEliminar");
+
+  const formEditar = document.querySelector("#editar");
+
+  eliminar.addEventListener("click", async () => {
+    console.log("me diste click");
+    const id = eliminar.dataset.id;
+    console.log(id);
+    try {
+      const data = await fetch(`/mascotas/${id}`, {
+        method: "delete",
+      });
+      const res = await data.json();
+      if (res.estado) {
+        window.location.href = "/mascotas";
+      } else {
+        console.log(res);
+      }
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+  formEditar.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    // Alternativa #1 (capturar input)
+    const name = formEditar.elements["nombre"].value;
+    // Alternativa #2 (capturar input)
+    const description = document.querySelector("#descripcionInput").value;
+    const id = formEditar.dataset.id;
+    
+   
+    const data = await fetch(`/mascotas/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: JSON.stringify({ name, description }),
+    });
+
+    const res = await data.json();
+
+    if (res.estado) {
+      console.log("ok")
+      window.location.href = "/mascotas";
+    } else {
+      console.log(res);
+    }
+  });
+</script>
